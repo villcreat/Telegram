@@ -191,6 +191,14 @@ public class PhoneFormat {
         try {
             String str = strip(orig);
 
+            // villcreat: branded anonymous +777 numbers. The generic calling-code
+            // lookup checks prefixes shortest-first and matches "7"=Russia before it
+            // ever reaches "777", so +777 numbers get mangled into RU format. Handle
+            // them here explicitly: "+777 " + remaining digits grouped by 4.
+            if (str.startsWith("+777")) {
+                return formatFragmentNumber(str.substring(1));
+            }
+
             if (str.startsWith("+")) {
                 String rest = str.substring(1);
                 CallingCodeInfo info = findCallingCodeInfo(rest);
@@ -229,6 +237,20 @@ public class PhoneFormat {
             return orig;
         }
 
+    }
+
+    // villcreat: format a +777 branded/anonymous number as "+777 XXXX XXXX"
+    // (remaining digits after the 777 prefix grouped in blocks of 4).
+    private static String formatFragmentNumber(String digits) {
+        StringBuilder sb = new StringBuilder("+777");
+        String rest = digits.length() > 3 ? digits.substring(3) : "";
+        for (int i = 0; i < rest.length(); i++) {
+            if (i % 4 == 0) {
+                sb.append(' ');
+            }
+            sb.append(rest.charAt(i));
+        }
+        return sb.toString();
     }
 
     public boolean isPhoneNumberValid(String phoneNumber) {

@@ -13461,7 +13461,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                             text = LocaleController.getString(R.string.PhoneHidden);
                             phoneNumber = null;
                         }
-                        isFragmentPhoneNumber = phoneNumber != null && phoneNumber.matches("888\\d{8}");
+                        isFragmentPhoneNumber = phoneNumber != null && (phoneNumber.matches("888\\d{8}") || phoneNumber.startsWith("777"));
                         detailCell.setTextAndValue(text, LocaleController.getString(isFragmentPhoneNumber ? R.string.AnonymousNumber : R.string.PhoneMobile), false);
                     } else if (position == noteRow) {
                         final TLRPC.UserFull userInfo = getMessagesController().getUserFull(userId);
