@@ -365,14 +365,14 @@ void Handshake::processHandshakeResponse_resPQ(TLObject *message, int64_t messag
             if (serverPublicKeys.empty()) {
                 // gramsrv patch: single self-hosted server RSA key + fingerprint for both backends.
                 serverPublicKeys.emplace_back("-----BEGIN RSA PUBLIC KEY-----\n"
-                                              "MIIBCgKCAQEAwCqBQbUx2yEN2jExonrwxMBAGAKrrtJebV+wBbRtBqRnOENJABG4\n"
-                                              "ngGTlbb1jMWst8mKN0IZ+UtYjMgwSWiVY9Tk0dMfbB0KijJ/aG+RgHrlVPZXGivN\n"
-                                              "Zci2vpFYbnkf5S4qtx6/fRDKUYfKIw8ooPTmo4zix6Dmf8c9kBQLUwoN1EOFH8Y7\n"
-                                              "NtIongIfJObxIhqPKO0JOEMcnejnze2t7yxHWwpn0Qh5IbjmSVU8DMsDWdj7Q8Ij\n"
-                                              "qvW/C1NwpR3lbUwxGZjHZjp+kxc593Z95XRaM9rHw73SXxrOylFR8234+2UMQPkE\n"
-                                              "TWaQSne3rKhKpcXiUicTaA2K7g9Pq12QpQIDAQAB\n"
+                                              "MIIBCgKCAQEArmd2rwjOJWyqtWbxs0GxWqBf4wal9Q8Lbx/bB67w0bTnRgq8Dw/c\n"
+                                              "xr/pkdbbB6q+HDDxj1e+6kiM0mdiG3Q+S/mLhNJbPXuIctq7DR8ZB8rmW+4u7cj0\n"
+                                              "lADAcoz/xcwn3VvF0PexsH2S28EROTCHmaTLd3w0wbJA+Qg3t0IVfsqdSqsv078Z\n"
+                                              "qNad9sPPKZlceESdnz/dxGg1WPzqstAUSnDFSGVVhY4ZGp+S+W6JG9Zs2ZWHa1Fa\n"
+                                              "5ocKM7G0sYc+NUiMW4jO6Y2/877s1q7lynPKgILtKQAJSLkC8/vprkwN73rcuryE\n"
+                                              "n2d4fe3LvjILpfANUQ5A99hgJOGPtk/IUQIDAQAB\n"
                                               "-----END RSA PUBLIC KEY-----");
-                serverPublicKeysFingerprints.push_back(0x841c1a818f075ab1);
+                serverPublicKeysFingerprints.push_back(0xb29baddfed469622);
             }
 
             size_t count2 = serverPublicKeysFingerprints.size();

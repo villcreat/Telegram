@@ -1816,7 +1816,7 @@ void ConnectionsManager::initDatacenters() {
     // gramsrv patch: single self-hosted DC (id 2) for both prod and test backends.
     if (datacenters.find(2) == datacenters.end()) {
         datacenter = new Datacenter(instanceNum, 2);
-        datacenter->addAddressAndPort("2.26.9.238", 2398, 0, "");
+        datacenter->addAddressAndPort("144.31.216.235", 2398, 0, "");
         datacenters[2] = datacenter;
     }
 }

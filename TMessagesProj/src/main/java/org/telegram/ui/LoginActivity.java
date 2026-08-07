@@ -3038,15 +3038,9 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
                 }
             }
 
-            if (countryState == COUNTRY_STATE_EMPTY) {
-                needShowAlert(getString(R.string.RestorePasswordNoEmailTitle), getString("ChooseCountry", R.string.ChooseCountry));
-                needHideProgress(false);
-                return;
-            } else if (countryState == COUNTRY_STATE_INVALID && !BuildVars.DEBUG_VERSION && !(TEST_BACKEND_IN_STORE && !BuildConfig.BUNDLE)) {
-                needShowAlert(getString(R.string.RestorePasswordNoEmailTitle), getString(R.string.WrongCountry));
-                needHideProgress(false);
-                return;
-            }
+            // gramsrv patch: self-hosted server accepts arbitrary country codes and phone
+            // numbers (+777/+888 and service ranges), so the client-side country gate is
+            // removed. The server remains the only authority on phone validity.
             String phone = PhoneFormat.stripExceptNumbers("" + codeField.getText() + phoneField.getText());
             if (activityMode == MODE_LOGIN) {
                 if (getParentActivity() instanceof LaunchActivity) {
