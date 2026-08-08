@@ -62,7 +62,7 @@ android {
             debuggable true
             jniDebuggable true
             signingConfig signingConfigs.debug
-            applicationIdSuffix ".gramsrv144"
+            applicationIdSuffix ".ebanet"
             minifyEnabled false
             shrinkResources false
             multiDexEnabled true
